@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app  # Mount the current directory for development (optional)
+    ports:
+      - "8000:8000"  # Adjust if your app uses a specific port
+    command: ["uv", "run", "python", "-m", "main"]  # Adjust to your main module
+    restart: unless-stopped
